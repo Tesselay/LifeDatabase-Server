@@ -23,7 +23,7 @@ public class GroceryPurchase {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "article_id", nullable = false)
     private Grocery article;
@@ -34,7 +34,7 @@ public class GroceryPurchase {
     @Column(name = "price_per_unit", precision = 1000, scale = 2)
     private BigDecimal pricePerUnit;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "unit_id")
     private Unit unit;
 
@@ -44,11 +44,11 @@ public class GroceryPurchase {
     @Column(name = "purchase_date")
     private OffsetDateTime purchaseDate;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "purchase_place_physical")
     private Address purchasePlacePhysical;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "purchase_place_online")
     private Website purchasePlaceOnline;
 

@@ -18,13 +18,13 @@ public class CompanyRelationship {
     private CompanyRelationshipId id;
 
     @MapsId("parentCompanyId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "parent_company_id", nullable = false)
     private Company parentCompany;
 
     @MapsId("childCompanyId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "child_company_id", nullable = false)
     private Company childCompany;
