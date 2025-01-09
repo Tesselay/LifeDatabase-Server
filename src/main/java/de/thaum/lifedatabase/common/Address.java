@@ -1,7 +1,5 @@
 package de.thaum.lifedatabase.common;
 
-import de.thaum.lifedatabase.companies.CompanyAddress;
-import de.thaum.lifedatabase.groceries.GroceryPurchase;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +8,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.OffsetDateTime;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -48,11 +44,5 @@ public class Address {
 
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
-
-    @OneToMany(mappedBy = "address")
-    private Set<CompanyAddress> companyAddresses = new LinkedHashSet<>();
-
-    @OneToOne(mappedBy = "purchasePlacePhysical")
-    private GroceryPurchase groceryPurchase;
 
 }

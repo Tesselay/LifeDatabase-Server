@@ -11,8 +11,6 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -49,11 +47,5 @@ public class Grocery {
 
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
-
-    @OneToMany(mappedBy = "grocery")
-    private Set<GroceryCategory> groceryCategories = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "article")
-    private Set<GroceryPurchase> groceryPurchases = new LinkedHashSet<>();
 
 }

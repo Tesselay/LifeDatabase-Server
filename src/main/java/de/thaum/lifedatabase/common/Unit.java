@@ -1,14 +1,11 @@
 package de.thaum.lifedatabase.common;
 
-import de.thaum.lifedatabase.groceries.GroceryPurchase;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.OffsetDateTime;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -32,8 +29,5 @@ public class Unit {
 
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
-
-    @OneToMany(mappedBy = "unit")
-    private Set<GroceryPurchase> groceryPurchases = new LinkedHashSet<>();
 
 }

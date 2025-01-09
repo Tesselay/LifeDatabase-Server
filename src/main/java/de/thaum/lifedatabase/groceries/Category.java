@@ -6,8 +6,6 @@ import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.OffsetDateTime;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -28,8 +26,5 @@ public class Category {
 
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
-
-    @OneToMany(mappedBy = "category")
-    private Set<GroceryCategory> groceryCategories = new LinkedHashSet<>();
 
 }

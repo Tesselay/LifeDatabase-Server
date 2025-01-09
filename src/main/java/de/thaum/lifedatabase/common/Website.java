@@ -1,15 +1,11 @@
 package de.thaum.lifedatabase.common;
 
-import de.thaum.lifedatabase.companies.CompanyWebsite;
-import de.thaum.lifedatabase.groceries.GroceryPurchase;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.OffsetDateTime;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -30,11 +26,5 @@ public class Website {
 
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
-
-    @OneToMany(mappedBy = "website")
-    private Set<CompanyWebsite> companyWebsites = new LinkedHashSet<>();
-
-    @OneToOne(mappedBy = "purchasePlaceOnline")
-    private GroceryPurchase groceryPurchase;
 
 }
