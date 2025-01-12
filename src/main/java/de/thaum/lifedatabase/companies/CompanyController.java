@@ -21,27 +21,27 @@ public class CompanyController {
         this.companyWebsiteRepository = companyWebsiteRepository;
     }
 
-    @GetMapping("/brands")
+    @GetMapping("/brands/all")
     public Page<Brand> getBrands(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
         return this.brandRepository.findAll(PageRequest.of(page, size));
     }
 
-    @GetMapping("/companies")
+    @GetMapping("/companies/all")
     public Page<Company> getCompanies(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
         return this.companyRepository.findAll(PageRequest.of(page, size));
     }
 
-    @GetMapping("/companyAdresses")
+    @GetMapping("/companyAdresses/all")
     public Page<CompanyAddress> getCompanyAdresses(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
         return this.companyAddressRepository.findAll(PageRequest.of(page, size));
     }
 
-    @GetMapping("/companyRelationships")
+    @GetMapping("/companyRelationships/all")
     public Page<CompanyRelationship> getCompanyRelationships(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
         return this.companyRelationshipRepository.findAll(PageRequest.of(page, size));
     }
 
-    @GetMapping("/companyWebsites")
+    @GetMapping("/companyWebsites/all")
     public Page<CompanyWebsite> getCompanyWebsites(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
         return this.companyWebsiteRepository.findAll(PageRequest.of(page, size));
     }

@@ -21,27 +21,27 @@ public class CommonController {
         this.websiteRepository = websiteRepository;
     }
 
-    @GetMapping("/addresses")
+    @GetMapping("/addresses/all")
     public Page<Address> getAddresses(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
         return this.addressRepository.findAll(PageRequest.of(page, size));
     }
 
-    @GetMapping("/countries")
+    @GetMapping("/countries/all")
     public Page<Country> getCountries(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
         return this.countryRepository.findAll(PageRequest.of(page, size));
     }
 
-    @GetMapping("/cities")
+    @GetMapping("/cities/all")
     public Page<City> getCities(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
         return this.cityRepository.findAll(PageRequest.of(page, size));
     }
 
-    @GetMapping("/units")
+    @GetMapping("/units/all")
     public Page<Unit> getUnits(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
         return this.unitRepository.findAll(PageRequest.of(page, size));
     }
 
-    @GetMapping("/websites")
+    @GetMapping("/websites/all")
     public Page<Website> getWebsites(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
         return this.websiteRepository.findAll(PageRequest.of(page, size));
     }
