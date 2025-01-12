@@ -1,5 +1,6 @@
 package de.thaum.lifedatabase.groceries;
 
+import de.thaum.lifedatabase.common.Unit;
 import de.thaum.lifedatabase.companies.Brand;
 import de.thaum.lifedatabase.companies.Company;
 import jakarta.persistence.*;
@@ -28,8 +29,9 @@ public class Grocery {
     @Column(name = "content", precision = 1000, scale = 2)
     private BigDecimal content;
 
-    @Column(name = "unit")
-    private Long unit;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "unit", nullable = false)
+    private Unit unit;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
