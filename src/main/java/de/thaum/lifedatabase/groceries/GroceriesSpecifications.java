@@ -2,7 +2,7 @@ package de.thaum.lifedatabase.groceries;
 
 import org.springframework.data.jpa.domain.Specification;
 
-public class GrocerySpecifications {
+public class GroceriesSpecifications {
     public static Specification<Grocery> hasName(String name) {
         return (root, query, criteriaBuilder) -> name == null || name.isEmpty()
                 ? null

@@ -36,7 +36,7 @@ public class GroceriesController {
             @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size
     ) {
         Specification<Grocery> spec = Specification
-                .where(GrocerySpecifications.hasName(name));
+                .where(GroceriesSpecifications.hasName(name));
 
         return this.groceryRepository.findAll(spec, PageRequest.of(page, size));
     }
