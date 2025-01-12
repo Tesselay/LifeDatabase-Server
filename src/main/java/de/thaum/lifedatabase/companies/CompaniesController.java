@@ -5,20 +5,22 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class CompanyController {
+public class CompaniesController {
 
     private final BrandRepository brandRepository;
     private final CompanyRepository companyRepository;
     private final CompanyAddressRepository companyAddressRepository;
     private final CompanyRelationshipRepository companyRelationshipRepository;
     private final CompanyWebsiteRepository companyWebsiteRepository;
+    private final CompanyService companyService;
 
-    public CompanyController(BrandRepository brandRepository, CompanyRepository companyRepository, CompanyAddressRepository companyAddressRepository, CompanyRelationshipRepository companyRelationshipRepository, CompanyWebsiteRepository companyWebsiteRepository) {
+    public CompaniesController(BrandRepository brandRepository, CompanyRepository companyRepository, CompanyAddressRepository companyAddressRepository, CompanyRelationshipRepository companyRelationshipRepository, CompanyWebsiteRepository companyWebsiteRepository, CompanyService companyService) {
         this.brandRepository = brandRepository;
         this.companyRepository = companyRepository;
         this.companyAddressRepository = companyAddressRepository;
         this.companyRelationshipRepository = companyRelationshipRepository;
         this.companyWebsiteRepository = companyWebsiteRepository;
+        this.companyService = companyService;
     }
 
     @GetMapping("/brands/all")
@@ -26,9 +28,12 @@ public class CompanyController {
         return this.brandRepository.findAll(PageRequest.of(page, size));
     }
 
-    @GetMapping("/companies/all")
-    public Page<Company> getCompanies(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
-        return this.companyRepository.findAll(PageRequest.of(page, size));
+    @GetMapping("/companies")
+    public Page<CompanyWithRelationshipsDTO> getCompanies(
+            @RequestParam() String name,
+            @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size
+    ) {
+        return this.companyService.getCompaniesWithRelationships(name, PageRequest.of(page, size));
     }
 
     @GetMapping("/companyAdresses/all")
