@@ -8,10 +8,4 @@ public class GrocerySpecifications {
                 ? null
                 : criteriaBuilder.like(criteriaBuilder.lower(root.get("name")), "%" + name.toLowerCase() + "%");
     }
-
-    public static Specification<Grocery> hasContent(Integer content) {
-        return (root, query, criteriaBuilder) -> content == null
-                ? null
-                : criteriaBuilder.equal(root.get("content"), content);
-    }
 }
